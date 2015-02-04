@@ -140,6 +140,11 @@ var handleEnd = function(evt) {
   var ctx = el.getContext("2d");
   var touches = evt.changedTouches;
 
+    //check to see if line is within x and y coordinates
+  checkline(touchesStoreX, touchesStoreY, ctx)//ctx
+
+
+
   for (var i=0; i < touches.length; i++) {
     var color = colorForTouch(touches[i]);
     var idx = ongoingTouchIndexById(touches[i].identifier);
