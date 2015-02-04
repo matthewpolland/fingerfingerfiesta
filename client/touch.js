@@ -44,17 +44,28 @@ window.onload = function() {
   startup();
 };
 
+var heldboxes = [];
+
 var addRect = function(ctx){
   var count = 30;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
     if (rand===3){
-      if (count>5){
-        count--;
-      }
       var x = 25 + Math.floor(Math.random()*900);
       var y = 25 + Math.floor(Math.random()*1500);
-      ctx.fillRect(x,y,50,50);
+      var flag = true;
+      for(var i=0; i<heldboxes.length; i++){
+        if(Math.abs(heldboxes[i][0]-x)<50&&Math.abs(heldboxes[i][1]-y)<50){
+          flag = false;
+        }
+      }
+      if(flag){        
+        if (count>5){
+          count--;
+        }
+        heldboxes.push([x,y]);
+        ctx.fillRect(x,y,50,50);
+      }
     }
   }
   return inner;
