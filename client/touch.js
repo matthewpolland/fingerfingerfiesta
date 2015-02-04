@@ -14,9 +14,11 @@ var startup = function() {
   var c = document.getElementById("canvas");
   var ctx = c.getContext("2d");
 
-
   ctx.rect(40,40, 100,100);
   ctx.stroke();
+
+  var finalCountDown = addRect(ctx);
+  setInterval(finalCountDown,33);
   // ctx.fillText("Happy", 10, 50);
   // ctx.fillText("Angry", 450, 550);
   // ctx.fillText("Excited", 450, 50);
@@ -41,6 +43,22 @@ var swipeSummary = {};
 window.onload = function() {
   startup();
 };
+
+var addRect = function(ctx){
+  var count = 30;
+  var inner = function(){    
+    var rand = Math.floor(Math.random()*count);
+    if (rand===3){
+      if (count>5){
+        count--;
+      }
+      var x = 25 + Math.floor(Math.random()*500);
+      var y = 25 + Math.floor(Math.random()*500);
+      ctx.fillRect(x,y,50,50);
+    }
+  }
+  return inner;
+}
 
 var handleStart = function(evt) {
 

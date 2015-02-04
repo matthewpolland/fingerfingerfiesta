@@ -1,4 +1,4 @@
-angular.module('d3', [])
+angular.module('fireDevilApp.services', [])
 
 .factory('d3Service', [function(){
   var d3;
