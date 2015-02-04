@@ -6,7 +6,7 @@
  *
  * Main module of the application.
  */
-var fireDevil = angular.module('fireDevilApp', ['firebase'])
+var fireDevil = angular.module('fireDevilApp', ['firebase', 'd3','fireDevilApp.directives'])
   .controller('UserDataCtrl', ['$scope', '$firebase', function($scope, $firebase) {
     var originalUserStorage = {};
     var ref = new Firebase('https://fingerfiesta.firebaseio.com/');
