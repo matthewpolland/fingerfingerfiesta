@@ -1,5 +1,4 @@
 
-
 var startup = function() {
   var el = document.getElementsByTagName("canvas")[0];
   el.addEventListener("touchstart", handleStart, false);
@@ -7,7 +6,7 @@ var startup = function() {
   el.addEventListener("touchcancel", handleCancel, false);
   el.addEventListener("touchleave", handleEnd, false);
   el.addEventListener("touchmove", handleMove, false);
-  window.localStorage.touchUser = prompt("What's your name?");
+  // window.localStorage.touchUser = prompt("What's your name?");
   //log("initialized.");
 
   //Put text on the canvas
@@ -187,7 +186,6 @@ var handleEnd = function(evt) {
 
     //check to see if line is within x and y coordinates
   checkline(touchesStoreX, touchesStoreY, ctx)//ctx
-
 
 
   for (var i=0; i < touches.length; i++) {
