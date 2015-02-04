@@ -1,3 +1,4 @@
+
 var Xcheckline = function(touchesStoreX, touchesStoreY, ctx){
   var beginX = touchesStoreX[0];
   var beginY = touchesStoreY[0];
@@ -15,6 +16,7 @@ var Xcheckline = function(touchesStoreX, touchesStoreY, ctx){
       // console.log(i, touchesStoreY[i])
       if(touchesStoreY[i] < maxHeight && touchesStoreY[i] > minHeight){
         console.log("YAY!!!");
+        scoreApp.addScore();
         //below clears the line 
         ctx.clearRect(0,0,canvas.width,canvas.height);
         //check if line hits square HERE

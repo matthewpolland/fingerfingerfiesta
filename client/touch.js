@@ -1,5 +1,4 @@
 
-
 var startup = function() {
   var el = document.getElementsByTagName("canvas")[0];
   el.addEventListener("touchstart", handleStart, false);
@@ -187,7 +186,6 @@ var handleEnd = function(evt) {
 
     //check to see if line is within x and y coordinates
   checkline(touchesStoreX, touchesStoreY, ctx)//ctx
-
 
 
   for (var i=0; i < touches.length; i++) {
