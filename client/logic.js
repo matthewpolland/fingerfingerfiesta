@@ -1,4 +1,4 @@
-var checkline = function(touchesStoreX, touchesStoreY, ctx){
+var Xcheckline = function(touchesStoreX, touchesStoreY, ctx){
   var beginX = touchesStoreX[0];
   var beginY = touchesStoreY[0];
   var endX = touchesStoreX[touchesStoreX.length-1];

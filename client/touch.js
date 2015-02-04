@@ -50,7 +50,7 @@ var addRect = function(ctx){
   var count = 30;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
-    if (rand===3){
+    if (rand===3 && heldboxes.length<11){
       var x = 25 + Math.floor(Math.random()*900);
       var y = 25 + Math.floor(Math.random()*1500);
       var flag = true;
@@ -69,6 +69,40 @@ var addRect = function(ctx){
     }
   }
   return inner;
+}
+
+var checkline = function(touchesStoreX, touchesStoreY, ctx){
+  var beginX = touchesStoreX[0];
+  var beginY = touchesStoreY[0];
+  var endX = touchesStoreX[touchesStoreX.length-1];
+  var endY = touchesStoreY[touchesStoreX.length-1];
+  var slope = -(endX-beginX)/(endY-beginY);
+  console.log('SLOPE', slope);
+
+  for (var j=0; j<heldboxes.length; j++){  
+    var maxHeight = heldboxes[j][1]+50;
+    var minHeight = heldboxes[j][1];
+    var mustBeLeftOf = heldboxes[j][0];
+    var mustBeRightOf = heldboxes[j][0]+50;
+    if(beginX<=mustBeLeftOf && endX>=mustBeRightOf){
+      var flag = true;
+      for(var i = 0; i < touchesStoreY.length; i++){
+        // console.log(i, touchesStoreY[i])
+        if(touchesStoreY[i] < maxHeight && touchesStoreY[i] > minHeight){
+          console.log("YAY!!!");
+          //below clears the line 
+          if(flag){
+            ctx.clearRect(mustBeLeftOf,minHeight,mustBeLeftOf+50,minHeight+50);
+            heldboxes.splice(j,1);
+            flag = false;
+          }
+          //check if line hits square HERE
+          //ctx.clearRect(square.x,square.y,square.w,square.h);
+        }
+      }
+    }
+  }
+
 }
 
 var handleStart = function(evt) {
