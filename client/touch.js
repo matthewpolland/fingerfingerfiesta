@@ -84,21 +84,27 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
     var mustBeLeftOf = heldboxes[j][0];
     var mustBeRightOf = heldboxes[j][0]+50;
     if(beginX<=mustBeLeftOf && endX>=mustBeRightOf){
-      var flag = true;
+      var touchOccurs = false;
+      var staysIn = true
       for(var i = 0; i < touchesStoreY.length; i++){
         // console.log(i, touchesStoreY[i])
         if(touchesStoreY[i] < maxHeight && touchesStoreY[i] > minHeight){
-          console.log("YAY!!!");
-          //below clears the line 
-          if(flag){
-            ctx.clearRect(mustBeLeftOf,minHeight,mustBeLeftOf+50,minHeight+50);
-            heldboxes.splice(j,1);
-            flag = false;
-          }
-          //check if line hits square HERE
-          //ctx.clearRect(square.x,square.y,square.w,square.h);
+          touchOccurs = true;
+        }
+        if(touchesStoreY[i] > maxHeight || touchesStoreY[i] < minHeight){
+          staysIn=false;
         }
       }
+      console.log("YAY!!!");
+      //below clears the line 
+      if(touchOccurs&&staysIn){
+        ctx.clearRect(heldboxes[j][0],heldboxes[j][1],50,50);
+        heldboxes.splice(j,1);
+        flag = false;
+      }
+      //check if line hits square HERE
+      //ctx.clearRect(square.x,square.y,square.w,square.h);
+        
     }
   }
 
