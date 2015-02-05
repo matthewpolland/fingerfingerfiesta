@@ -45,9 +45,27 @@ window.onload = function() {
 };
 
 var heldboxes = [];
+var boxcount = 0;
+
+var CreateBox = function(x, y, ctx){
+  this.xPosition = x;
+  this.yPosition = y;
+  this.place = boxcount;
+  boxcount++;
+  setTimeout(this.killSelf.bind(this), 1500, ctx);
+}
+
+CreateBox.prototype.killSelf = function(ctx){
+  ctx.clearRect(this.xPosition,this.yPosition,50,50); 
+  for (var i=0; i<heldboxes.length; i++){
+    if(heldboxes[i].place===this.place){
+      heldboxes.splice(i,1);
+    }
+  }
+}
 
 var addRect = function(ctx){
-  var count = 30;
+  var count = 45;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
     if (rand===3 && heldboxes.length<11){
@@ -55,15 +73,15 @@ var addRect = function(ctx){
       var y = 25 + Math.floor(Math.random()*1500);
       var flag = true;
       for(var i=0; i<heldboxes.length; i++){
-        if(Math.abs(heldboxes[i][0]-x)<50&&Math.abs(heldboxes[i][1]-y)<50){
+        if(Math.abs(heldboxes[i].xPosition-x)<50&&Math.abs(heldboxes[i].yPosition-y)<50){
           flag = false;
         }
       }
       if(flag){        
-        if (count>5){
+        if (count>15){
           count--;
         }
-        heldboxes.push([x,y]);
+        heldboxes.push(new CreateBox(x,y,ctx));
         ctx.fillRect(x,y,50,50);
       }
     }
@@ -80,10 +98,10 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
   console.log('SLOPE', slope);
 
   for (var j=0; j<heldboxes.length; j++){  
-    var maxHeight = heldboxes[j][1]+50;
-    var minHeight = heldboxes[j][1];
-    var mustBeLeftOf = heldboxes[j][0];
-    var mustBeRightOf = heldboxes[j][0]+50;
+    var maxHeight = heldboxes[j].yPosition+50;
+    var minHeight = heldboxes[j].yPosition;
+    var mustBeLeftOf = heldboxes[j].xPosition;
+    var mustBeRightOf = heldboxes[j].xPosition+50;
     if(beginX<=mustBeLeftOf && endX>=mustBeRightOf){
       var touchOccurs = false;
       var staysIn = true
@@ -99,9 +117,8 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
       console.log("YAY!!!");
       //below clears the line 
       if(touchOccurs&&staysIn){
-        ctx.clearRect(heldboxes[j][0],heldboxes[j][1],50,50);
+        ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,50,50);
         heldboxes.splice(j,1);
-        flag = false;
       }
       //check if line hits square HERE
       //ctx.clearRect(square.x,square.y,square.w,square.h);
