@@ -82,6 +82,7 @@ var addRect = function(ctx){
           count--;
         }
         heldboxes.push(new CreateBox(x,y,ctx));
+        ctx.fillStyle = "white";
         ctx.fillRect(x,y,50,50);
       }
     }
