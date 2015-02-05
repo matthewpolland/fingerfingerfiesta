@@ -4,6 +4,7 @@ var scoreMethods = {
     addScore: function() {
       totalScore += 5;
       $('h1').text("Score: " + ""+totalScore+"")
+      console.log('this is score', totalScore)
     },
     subtractScore: function() {
       $('h1').text("Score: " + ""+totalScore+"")
