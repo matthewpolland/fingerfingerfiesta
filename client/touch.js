@@ -52,11 +52,12 @@ var CreateBox = function(x, y, ctx){
   this.yPosition = y;
   this.place = boxcount;
   boxcount++;
-  // setTimeout(this.killSelf.bind(this), 1500, ctx);
+  setTimeout(this.killSelf.bind(this), 3000, ctx);
 }
 
 CreateBox.prototype.killSelf = function(ctx){
-  ctx.clearRect(this.xPosition,this.yPosition,50,50); 
+  ctx.fillStyle = "red";
+  ctx.fillRect(this.xPosition,this.yPosition,100,100); 
   for (var i=0; i<heldboxes.length; i++){
     if(heldboxes[i].place===this.place){
       heldboxes.splice(i,1);
@@ -65,15 +66,15 @@ CreateBox.prototype.killSelf = function(ctx){
 }
 
 var addRect = function(ctx){
-  var count = 45;
+  var count = 15;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
     if (rand===3 && heldboxes.length<11){
-      var x = 25 + Math.floor(Math.random()*900);
-      var y = 25 + Math.floor(Math.random()*1500);
+      var x = 25 + Math.floor(Math.random()*850);
+      var y = 25 + Math.floor(Math.random()*1450);
       var flag = true;
       for(var i=0; i<heldboxes.length; i++){
-        if(Math.abs(heldboxes[i].xPosition-x)<50&&Math.abs(heldboxes[i].yPosition-y)<50){
+        if(Math.abs(heldboxes[i].xPosition-x)<100&&Math.abs(heldboxes[i].yPosition-y)<100){
           flag = false;
         }
       }
@@ -83,8 +84,7 @@ var addRect = function(ctx){
         }
         heldboxes.push(new CreateBox(x,y,ctx));
         ctx.fillStyle = "white";
-
-        ctx.fillRect(x,y,50,50);
+        ctx.fillRect(x,y,100,100);
       }
     }
   }
@@ -100,10 +100,10 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
   console.log('SLOPE', slope);
 
   for (var j=0; j<heldboxes.length; j++){  
-    var maxHeight = heldboxes[j].yPosition+50;
+    var maxHeight = heldboxes[j].yPosition+100;
     var minHeight = heldboxes[j].yPosition;
     var mustBeLeftOf = heldboxes[j].xPosition;
-    var mustBeRightOf = heldboxes[j].xPosition+50;
+    var mustBeRightOf = heldboxes[j].xPosition+100;
     if(beginX<=mustBeLeftOf && endX>=mustBeRightOf){
       var touchOccurs = false;
       var staysIn = true
@@ -120,8 +120,7 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
       //below clears the line 
       if(touchOccurs&&staysIn){
         scoreMethods.addScore();
-        console.log('inside if')
-        ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,50,50);
+        ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,100,100);
         heldboxes.splice(j,1);
         flag = false;
       }
