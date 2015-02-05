@@ -120,6 +120,9 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
       if(touchOccurs&&staysIn){
         ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,50,50);
         heldboxes.splice(j,1);
+        flag = false;
+        scoreMethods.addScore();
+
       }
       //check if line hits square HERE
       //ctx.clearRect(square.x,square.y,square.w,square.h);
