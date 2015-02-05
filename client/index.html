@@ -13,6 +13,7 @@
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="bower_components/angular/angular.js"></script>
         <script src="scoreMethods.js"></script>
+        <script src="scoreApp.js"></script>
         <script src="touch.js"></script>
         <script src="db.js"></script>
         <script src="logic.js"></script>
@@ -26,10 +27,10 @@
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
-        <h1>Score: 0</h1>
-       <!--  <div class="score" ng-app="scoreApp">
-            <h1 ng-controller="scoreCtrl">Score: {{score}}</h1>
-        </div> -->
+        <!-- <h1>Score: 0/10</h1> -->
+        <div class="score" ng-app="scoreApp">
+            <h1 ng-controller="scoreCtrl">Score: {{score}}/{{minScore}}</h1>
+        </div>
 
         <!-- <div class="encouragement"></div> -->
 
