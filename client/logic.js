@@ -26,3 +26,24 @@ var Xcheckline = function(touchesStoreX, touchesStoreY, ctx){
   }
 
 }
+var timer = function () {
+  //if timer reaches zero
+    endLevel(); //pass it loss condition
+};
+
+var endLevel = function () {
+  //render something depending on win state
+  //clear screen
+  //call initLevel()
+};
+
+var incrementScore = function () {
+  //add to score
+  //check for score win
+    endLevel(); //win condition is passed
+};
+
+var initLevel = function (level) {
+  timer();
+  //run the box spawner
+};
