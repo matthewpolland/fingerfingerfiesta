@@ -14,8 +14,8 @@ var startup = function() {
   var c = document.getElementById("canvas");
   var ctx = c.getContext("2d");
 
-    ctx.rect(40,40, 100,100);
-    ctx.stroke();
+    // ctx.rect(40,40, 100,100);
+    // ctx.stroke();
 
     var finalCountDown = addRect(ctx);
     setInterval(finalCountDown,33);
@@ -83,6 +83,7 @@ var addRect = function(ctx){
         }
         heldboxes.push(new CreateBox(x,y,ctx));
         ctx.fillStyle = "white";
+
         ctx.fillRect(x,y,50,50);
       }
     }
