@@ -2,11 +2,12 @@ var totalScore = 0;
 var scoreMethods = {
     // score: 0,
     addScore: function() {
+      console.log('this is score', totalScore)
       totalScore += 5;
-      $('h1').text("Score: " + ""+totalScore+"")
+      $('h1').text("Score: " + ""+totalScore+"");
     },
     subtractScore: function() {
-      $('h1').text("Score: " + ""+totalScore+"")
+      $('h1').text("Score: " + ""+totalScore+"");
       totalScore -= 5;
     },
     getScore: function() {

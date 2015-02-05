@@ -52,7 +52,7 @@ var CreateBox = function(x, y, ctx){
   this.yPosition = y;
   this.place = boxcount;
   boxcount++;
-  setTimeout(this.killSelf.bind(this), 1500, ctx);
+  // setTimeout(this.killSelf.bind(this), 1500, ctx);
 }
 
 CreateBox.prototype.killSelf = function(ctx){
@@ -118,8 +118,11 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
       console.log("YAY!!!");
       //below clears the line 
       if(touchOccurs&&staysIn){
+        scoreMethods.addScore();
+        console.log('inside if')
         ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,50,50);
         heldboxes.splice(j,1);
+        flag = false;
       }
       //check if line hits square HERE
       //ctx.clearRect(square.x,square.y,square.w,square.h);
