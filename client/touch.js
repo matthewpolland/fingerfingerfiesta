@@ -65,7 +65,7 @@ CreateBox.prototype.killSelf = function(ctx){
 }
 
 var addRect = function(ctx){
-  var count = 45;
+  var count = 60;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
     if (rand===3 && heldboxes.length<11){
