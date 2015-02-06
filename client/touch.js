@@ -76,7 +76,7 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
     var minHeight = heldboxes[j].yPosition;
     var mustBeLeftOf = heldboxes[j].xPosition;
     var mustBeRightOf = heldboxes[j].xPosition+100;
-    if(beginX<=mustBeLeftOf && endX>=mustBeRightOf){
+    if((beginX<=mustBeLeftOf && endX>=mustBeRightOf) || (beginX>=mustBeLeftOf && endX<=mustBeRightOf)){
       var touchOccurs = false;
       var staysIn = true
       for(var i = 0; i < touchesStoreY.length; i++){
