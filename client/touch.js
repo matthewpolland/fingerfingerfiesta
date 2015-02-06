@@ -1,5 +1,4 @@
 
-
 var neon = ["#ff00ff","#00ffff","#00ff00","#ffff00","#ff0000","#83f52c","#FD0987","#FF3300"];
 
 var ongoingTouches = [];
@@ -332,6 +331,8 @@ var startup = function(level) {
         ctx.clearRect(heldboxes[i].xPosition,heldboxes[i].yPosition,100,100);
   }
   // heldboxes = [];
+  console.log('THIS IS THE URLLL', level.backgroundUrl)
+  $('.gameboard').css('background-image', 'url('+level.backgroundUrl+')')
   console.log('starting at level: ', level);
   var finalCountDown = addRect(ctx, level);
   setInterval(finalCountDown,33);
