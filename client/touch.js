@@ -64,7 +64,7 @@ CreateBox.prototype.killSelf = function(ctx){
   }
 }
 
-var addRect = function(ctx){
+var addRect = function(ctx, color){
   var count = 15;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
@@ -82,7 +82,7 @@ var addRect = function(ctx){
           count--;
         }
         heldboxes.push(new CreateBox(x,y,ctx));
-        ctx.fillStyle = "white";
+        ctx.fillStyle = color;
         ctx.fillRect(x,y,100,100);
       }
     }
