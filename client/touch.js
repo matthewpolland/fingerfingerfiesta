@@ -25,7 +25,7 @@ var CreateBox = function(x, y, timer, ctx){
   this.yPosition = y;
   this.place = boxcount;
   boxcount++;
-  setTimeout(this.killSelf.bind(this), timer, ctx);
+  // setTimeout(this.killSelf.bind(this), timer, ctx);
 };
 
 CreateBox.prototype.killSelf = function(ctx){
@@ -72,7 +72,6 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
   var endX = touchesStoreX[touchesStoreX.length-1];
   var endY = touchesStoreY[touchesStoreX.length-1];
   var slope = -(endX-beginX)/(endY-beginY);
-  console.log('SLOPE', slope);
 
   for (var j=0; j<heldboxes.length; j++){  
     var maxHeight = heldboxes[j].yPosition+100;
@@ -91,7 +90,6 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
           staysIn=false;
         }
       }
-      console.log("YAY!!!");
       //below clears the line 
       if(touchOccurs&&staysIn){
         scoreMethods.addScore();
@@ -122,7 +120,6 @@ var handleStart = function(evt) {
     ongoingTouches.push(copyTouch(touches[i]));
     var color = colorForTouch(touches[i]);
     ctx.beginPath();
-    console.log("STARTED! " + el.offsetLeft);
     ctx.arc(touches[i].pageX - el.offsetLeft, touches[i].pageY - el.offsetTop, 4, 0,2*Math.PI, false);  // a circle at the start
     ctx.fillStyle = color;
     ctx.fill();
@@ -194,7 +191,6 @@ var handleEnd = function(evt) {
   for (var i=0; i < touches.length; i++) {
     var color = colorForTouch(touches[i]);
     var idx = ongoingTouchIndexById(touches[i].identifier);
-    console.log("idx", idx);
     if (idx >= 0) {
       ctx.lineWidth = 4;
       ctx.fillStyle = color;
@@ -227,7 +223,6 @@ var handleEnd = function(evt) {
   var endY = touchesStoreY[touchesStoreX.length-1];
 
   var slope = -(endX-beginX)/(endY-beginY);
-  console.log('SLOPE', slope);
 
   var maxHeight = 900;
   var minHeight = 700;
@@ -242,11 +237,7 @@ var handleEnd = function(evt) {
     for(var i = 0; i < touchesStoreY.length; i++){
       // console.log(i, touchesStoreY[i])
       if(touchesStoreY[i] < maxHeight && touchesStoreY[i] > minHeight){
-        console.log("YAY!!!");
-        //below clears the line 
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        //check if line hits square HERE
-        //ctx.clearRect(square.x,square.y,square.w,square.h);
+        
       }
     }
   }
@@ -323,25 +314,7 @@ var printLocalStorage = function() {
 
     swipeSummary[keys] = [dx, dy, slope];
 
-    //Did I get closer to the top right corner?
-    if (dx > 0 && dy < 0) {
-      log("EXCITED :D at " + swipe[2]);
-    }
-
-    //Did I get closer to the bottom right corner?
-    if (dx > 0 && dy > 0) {
-      log("ANGRY >:( at " + swipe[2]);
-    }
-    //Did I get closer to the top left corner?
-    if (dx < 0 && dy < 0) {
-      log("HAPPY :) at " + swipe[2]);
-    }
-
-    //Did I get closer to the bottom left corner?
-    if (dx < 0 && dy > 0) {
-      log("SAD :( at " + swipe[2]);
-    }
-  }
+      }
 };
 
 var startup = function(level) {
@@ -353,7 +326,13 @@ var startup = function(level) {
   el.addEventListener("touchmove", handleMove, false);
   var c = document.getElementById("canvas");
   var ctx = c.getContext("2d");
-
+  totalScore = 0;
+  console.log('boxes', heldboxes);
+  for (var i = 0; i < heldboxes.length; i++){
+        ctx.clearRect(heldboxes[i].xPosition,heldboxes[i].yPosition,100,100);
+  }
+  // heldboxes = [];
+  console.log('starting at level: ', level);
   var finalCountDown = addRect(ctx, level);
   setInterval(finalCountDown,33);
   };
@@ -364,7 +343,7 @@ window.onload = function() {
     startup(levels[0]);
   }else{
     if (confirm('Are you ready?')){
-      startup();
+      startup(levels[0]);
     }
   }
 };
