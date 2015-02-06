@@ -27,10 +27,13 @@
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
-        <h1>Score: 0</h1>
+
+        <div class="score" ng-app="scoreApp">
+            <h1 ng-controller="scoreCtrl">Score: {{score}}/{{minScore}}</h1>
+        </div>
+
         <canvas id="canvas" width="960" height="1600" class="gameboard" >
             Your browser does not support canvas elements.
-
         </canvas>
 
     </body>
