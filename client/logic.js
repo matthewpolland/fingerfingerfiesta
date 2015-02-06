@@ -1,8 +1,8 @@
 var timeUp = false;
 var level = 0;
 var levels = [
-{minScore: 20, color: purple},
-{minscore: 40, color: green}
+{minScore: 20, color: "purple", timer: 5000},
+{minscore: 40, color: "green", timer: 3000}
 ]
 
 var timer = function () {
@@ -25,19 +25,18 @@ var endLevel = function (didYouWin) {
   //clear screen
   if(didYouWin){
     alert('You Win! Get ready for the next level!');
-    var nextLevel = level++
-    initLevel(nextLevel);
+    var nextLevel = level++;
+    //startup();;
   }else{
     alert('You Lose! Back to Level 1');
     level = 0;
-    initLevel(level);
+    //startup();
   }
 };
 
 
-var initLevel = function () {
-  // timer();
-  // console.log('this is color', levels[lvl][color])
-  // createRect(ctx, levels[lvl][color]);
-  //run the box spawner
+var initLevel = function (ctx, level) {
+  //timer();
+  var finalCountDown = addRect(ctx, level.color, level.timer);
+  setInterval(finalCountDown,33);
 };
