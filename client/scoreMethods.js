@@ -9,6 +9,7 @@ var scoreMethods = {
       if (this.checkScore() === true) {
         var didYouWin = true;
         endLevel(didYouWin);
+
       }
     },
     subtractScore: function() {

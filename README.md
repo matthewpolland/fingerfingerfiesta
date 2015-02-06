@@ -7,10 +7,10 @@ Data Touch Feelings => Insight
 
 ## Team
 
-  - __Product Owner__: Nick "[@nsipplswezey](https://github.com/nsipplswezey)" diablo fuego
-  - __Scrum Master__: Tole "[@tliber](https://github.com/tliber)" огонь дьявол (ogon' d'yavol)
-  - __Development Superhero__: Dan "[@teachrdan](https://github.com/teachrdan)" 火の悪魔 (hi no akuma)
-  - __Development Superheroine__: Christine "[@cyanCYMK](https://github.com/cyanCYMK)" 화재 악마 (hwajae agma)
+  - __Product Owner__: Matthew Pollad
+  - __Scrum Master__: Jake "Jake.Query" Obron
+  - __Development Team Members__: Samin Sepasi, Karim Kyler
+
 
 ## Table of Contents
 
