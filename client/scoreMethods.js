@@ -6,7 +6,7 @@ var scoreMethods = {
       console.log('this is score', totalScore)
       totalScore += 5;
        $('h1').text("Score: " + ""+totalScore+""+"/"+""+minScore+"");
-      if (checkScore === true) {
+      if (this.checkScore() === true) {
         alert('you passed!');
       }
     },

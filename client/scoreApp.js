@@ -3,3 +3,4 @@ scoreApp = angular.module('scoreApp', [])
     $scope.score = totalScore;
     $scope.minScore = minScore;
   })
+  

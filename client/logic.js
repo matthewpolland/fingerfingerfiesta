@@ -55,7 +55,6 @@ var endLevel = function (didYouWin) {
   }
 };
 
-
 var incrementScore = function () {
   //add to score
   //check for score win
