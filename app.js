@@ -9,13 +9,14 @@ var passport = require('passport');
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/',express.static(__dirname + '/client/views'));
+
 app.use('/swipez',express.static(__dirname + '/client'));
 
-app.use('/data-view',express.static(__dirname +'/app'));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/client/views/main.html');
-});
+// app.get('/', function(req, res) {
+//   res.sendFile(__dirname + '/client/views');
+// });
 
 //asks google for permissions of specific items defined in scopes
 app.get('/login',
@@ -25,7 +26,7 @@ app.get('/login',
               'https://www.googleapis.com/auth/calendar.readonly'] }),
   function(req, res){
     // console.log(req);
-    console.log('inside passport function')
+    console.log('inside passport function');
     // The request will be redirected to Google for authentication, so this
     // function will not be called.
   });
@@ -36,7 +37,7 @@ app.use('google-cal',express.static(__dirname + '/google-cal'));
 app.get('/data-view/callback',
   passport.authenticate('google', { failureRedirect: '/data-view' }),
   function(req, res) {
-    console.log(req.user._json.name)
+    console.log(req.user._json.name);
     res.redirect('/swipez');
   });
   //DOES NOT WORK, issue #63 in waffle.io
