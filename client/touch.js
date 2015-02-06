@@ -24,13 +24,12 @@ var CreateBox = function(x, y, timer, ctx){
   this.yPosition = y;
   this.place = boxcount;
   boxcount++;
-  // setTimeout(this.killSelf.bind(this), timer, ctx);
+  setTimeout(this.killSelf.bind(this), timer, ctx);
 };
 
 CreateBox.prototype.killSelf = function(ctx){
   //var nextColor = neon[Math.floor(Math.random()*8)]
-  ctx.fillStyle = 'red';
-  ctx.fillRect(this.xPosition,this.yPosition,100,100); 
+  ctx.clearRect(this.xPosition,this.yPosition,100,100); 
   for (var i=0; i<heldboxes.length; i++){
     if(heldboxes[i].place===this.place){
       heldboxes.splice(i,1);
@@ -56,7 +55,7 @@ var addRect = function(ctx, level){
         // if (count>15){
         //   count--;
         // }
-        heldboxes.push(new CreateBox(x,y,timer,ctx));
+        heldboxes.push(new CreateBox(x,y,level.timer,ctx));
         ctx.fillStyle = color;
         ctx.fillRect(x,y,100,100);
       }
@@ -92,7 +91,8 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
       //below clears the line 
       if(touchOccurs&&staysIn){
         scoreMethods.addScore();
-        ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,100,100);
+        ctx.fillStyle = 'green';
+        ctx.fillRect(heldboxes[j].xPosition,heldboxes[j].yPosition,100,100);
         heldboxes.splice(j,1);
         flag = false;
       }
@@ -336,7 +336,7 @@ var startup = function(level) {
   console.log('starting at level: ', level);
   var finalCountDown = addRect(ctx, level);
   setInterval(finalCountDown,33);
-  };
+};
 
 window.onload = function() {
   if (confirm('Are you ready?')){

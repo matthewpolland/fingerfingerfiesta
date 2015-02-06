@@ -1,8 +1,13 @@
 var timeUp = false;
 var level = 0;
 var levels = [
-{minScore: 20, color: "purple", timer: 5000, backgroundUrl: "img/swerve.gif", id: 1},
-{minscore: 40, color: "green", timer: 3000, backgroundUrl: "img/star.gif", id: 2}
+{minScore: 20, color: "violet", timer: 5000, backgroundUrl: "img/swerve.gif", id: 1},
+{minscore: 40, color: "indigo", timer: 4500, backgroundUrl: "img/star.gif", id: 2},
+{minScore: 40, color: "blue", timer: 4000},
+{minScore: 50, color: "#39FF14", timer: 3500},
+{minScore: 60, color: "yellow", timer: 3000},
+{minScore: 70, color: "orange", timer: 2500},
+{minScore: 80, color: "red", timer: 2000}
 ]
 var time = 30;
 var didYouWin = true;
@@ -26,9 +31,12 @@ var endLevel = function (didYouWin) {
   //render something depending on win state
   //clear screen
   if(didYouWin){
-    // alert('You Win! Get ready for the next level!');
-    var nextLevel = level++;
-    //startup();;
+    //alert('You Win! Get ready for the next level!');
+    level++;
+    var nextLevel = level;
+    console.log(nextLevel);
+    console.log(levels[nextLevel]);
+    startup(levels[nextLevel]);
   }else{
     // alert('You Lose! Back to Level 1');
     level = 0;
