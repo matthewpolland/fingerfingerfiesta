@@ -15,15 +15,25 @@ var startup = function() {
 
     // ctx.rect(40,40, 100,100);
     // ctx.stroke();
+    var levelA={
+      color: "white",
+      timer: 5000
+    }
+    initLevel(ctx, levels[level]);
+    // var finalCountDown = addRect(ctx);
+    // setInterval(finalCountDown,33);
+    //initLevel(ctx);
 
-    var finalCountDown = addRect(ctx);
-    setInterval(finalCountDown,33);
+    // var finalCountDown = addRect(ctx);
+    // setInterval(finalCountDown,33);
     // ctx.fillText("Happy", 10, 50);
     // ctx.fillText("Angry", 450, 550);
     // ctx.fillText("Excited", 450, 50);
     // ctx.fillText("Sad", 10, 550);
     // ctx.fillText("Thumb", 250, 300);
   }
+
+var neon = ["#ff00ff","#00ffff","#00ff00","#ffff00","#ff0000","#83f52c","#FD0987","#FF3300"];
 
 var ongoingTouches = [];
 
@@ -46,15 +56,16 @@ window.onload = function() {
 var heldboxes = [];
 var boxcount = 0;
 
-var CreateBox = function(x, y, ctx){
+var CreateBox = function(x, y, timer, ctx){
   this.xPosition = x;
   this.yPosition = y;
   this.place = boxcount;
   boxcount++;
-  setTimeout(this.killSelf.bind(this), 3000, ctx);
+  setTimeout(this.killSelf.bind(this), timer, ctx);
 }
 
 CreateBox.prototype.killSelf = function(ctx){
+  //var nextColor = neon[Math.floor(Math.random()*8)]
   ctx.fillStyle = "red";
   ctx.fillRect(this.xPosition,this.yPosition,100,100); 
   for (var i=0; i<heldboxes.length; i++){
@@ -64,7 +75,7 @@ CreateBox.prototype.killSelf = function(ctx){
   }
 }
 
-var addRect = function(ctx, color){
+var addRect = function(ctx, color, timer){
   var count = 15;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
@@ -78,10 +89,10 @@ var addRect = function(ctx, color){
         }
       }
       if(flag){        
-        if (count>15){
-          count--;
-        }
-        heldboxes.push(new CreateBox(x,y,ctx));
+        // if (count>15){
+        //   count--;
+        // }
+        heldboxes.push(new CreateBox(x,y,timer,ctx));
         ctx.fillStyle = color;
         ctx.fillRect(x,y,100,100);
       }
