@@ -118,10 +118,10 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
       console.log("YAY!!!");
       //below clears the line 
       if(touchOccurs&&staysIn){
+        scoreMethods.addScore();
         ctx.clearRect(heldboxes[j].xPosition,heldboxes[j].yPosition,100,100);
         heldboxes.splice(j,1);
         flag = false;
-        scoreMethods.addScore();
       }
       //check if line hits square HERE
       //ctx.clearRect(square.x,square.y,square.w,square.h);
@@ -368,3 +368,4 @@ var printLocalStorage = function() {
     }
   }
 };
+
