@@ -1,37 +1,4 @@
 
-var startup = function() {
-  var el = document.getElementsByTagName("canvas")[0];
-  el.addEventListener("touchstart", handleStart, false);
-  el.addEventListener("touchend", handleEnd, false);
-  el.addEventListener("touchcancel", handleCancel, false);
-  el.addEventListener("touchleave", handleEnd, false);
-  el.addEventListener("touchmove", handleMove, false);
-
-  //log("initialized.");
-
-  //Put text on the canvas
-  var c = document.getElementById("canvas");
-  var ctx = c.getContext("2d");
-
-    // ctx.rect(40,40, 100,100);
-    // ctx.stroke();
-    var levelA={
-      color: "white",
-      timer: 5000
-    }
-    initLevel(ctx, levels[level]);
-    // var finalCountDown = addRect(ctx);
-    // setInterval(finalCountDown,33);
-    //initLevel(ctx);
-
-    // var finalCountDown = addRect(ctx);
-    // setInterval(finalCountDown,33);
-    // ctx.fillText("Happy", 10, 50);
-    // ctx.fillText("Angry", 450, 550);
-    // ctx.fillText("Excited", 450, 50);
-    // ctx.fillText("Sad", 10, 550);
-    // ctx.fillText("Thumb", 250, 300);
-  }
 
 var neon = ["#ff00ff","#00ffff","#00ff00","#ffff00","#ff0000","#83f52c","#FD0987","#FF3300"];
 
@@ -49,9 +16,6 @@ var swipeSummary = {};
 // Get user name to correlate with swipeData
 
 
-window.onload = function() {
-  startup();
-};
 
 var heldboxes = [];
 var boxcount = 0;
@@ -62,21 +26,22 @@ var CreateBox = function(x, y, timer, ctx){
   this.place = boxcount;
   boxcount++;
   setTimeout(this.killSelf.bind(this), timer, ctx);
-}
+};
 
 CreateBox.prototype.killSelf = function(ctx){
   //var nextColor = neon[Math.floor(Math.random()*8)]
-  ctx.fillStyle = "red";
+  ctx.fillStyle = 'red';
   ctx.fillRect(this.xPosition,this.yPosition,100,100); 
   for (var i=0; i<heldboxes.length; i++){
     if(heldboxes[i].place===this.place){
       heldboxes.splice(i,1);
     }
   }
-}
+};
 
-var addRect = function(ctx, color, timer){
+var addRect = function(ctx, level){
   var count = 15;
+  var color = level.color;
   var inner = function(){    
     var rand = Math.floor(Math.random()*count);
     if (rand===3 && heldboxes.length<11){
@@ -375,6 +340,31 @@ var printLocalStorage = function() {
     //Did I get closer to the bottom left corner?
     if (dx < 0 && dy > 0) {
       log("SAD :( at " + swipe[2]);
+    }
+  }
+};
+
+var startup = function(level) {
+  var el = document.getElementsByTagName("canvas")[0];
+  el.addEventListener("touchstart", handleStart, false);
+  el.addEventListener("touchend", handleEnd, false);
+  el.addEventListener("touchcancel", handleCancel, false);
+  el.addEventListener("touchleave", handleEnd, false);
+  el.addEventListener("touchmove", handleMove, false);
+  var c = document.getElementById("canvas");
+  var ctx = c.getContext("2d");
+
+  var finalCountDown = addRect(ctx, level);
+  setInterval(finalCountDown,33);
+  };
+
+window.onload = function() {
+  if (confirm('Are you ready?')){
+
+    startup(levels[0]);
+  }else{
+    if (confirm('Are you ready?')){
+      startup();
     }
   }
 };
