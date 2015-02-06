@@ -26,11 +26,11 @@ var endLevel = function (didYouWin) {
   if(didYouWin){
     alert('You Win! Get ready for the next level!');
     var nextLevel = level++;
-    startup();;
+    //startup();;
   }else{
     alert('You Lose! Back to Level 1');
     level = 0;
-    startup();
+    //startup();
   }
 };
 
