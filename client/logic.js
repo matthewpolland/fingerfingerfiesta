@@ -25,8 +25,10 @@ var endLevel = function (didYouWin) {
   //clear screen
   if(didYouWin){
     alert('You Win! Get ready for the next level!');
-    var nextLevel = level++;
-    //startup();;
+    var nextLevel = level + 1;
+    console.log(nextLevel);
+    console.log(levels[nextLevel]);
+    startup(levels[nextLevel]);
   }else{
     alert('You Lose! Back to Level 1');
     level = 0;
