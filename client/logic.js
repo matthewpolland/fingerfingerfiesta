@@ -24,9 +24,10 @@ var Xcheckline = function(touchesStoreX, touchesStoreY, ctx){
       }
     }
   }
-
 }
+
 var timeUp = false;
+var level = 0;
 
 var timer = function () {
   timeUp = false;
@@ -39,7 +40,7 @@ var timer = function () {
   //if timer reaches zero
   didYouWin = false;
   timeUp = true; 
-  console.log('Time Up!');
+  alert('Time Up!');
   endLevel(didYouWin); //pass it loss condition
 };
 
@@ -48,18 +49,15 @@ var endLevel = function (didYouWin) {
   //clear screen
   if(didYouWin){
     alert('You Win! Get ready for the next level!');
-    // initLevel("nextLevel");
+    var nextLevel = level++
+    initLevel(nextLevel);
   }else{
     alert('You Lose! Back to Level 1');
-    // initLevel("level1");
+    level = 0;
+    initLevel(level);
   }
 };
 
-var incrementScore = function () {
-  //add to score
-  //check for score win
-    endLevel(); //win condition is passed
-};
 
 var initLevel = function (level) {
   timer();
