@@ -1,5 +1,4 @@
 
-
 var neon = ["#ff00ff","#00ffff","#00ff00","#ffff00","#ff0000","#83f52c","#FD0987","#FF3300"];
 
 var ongoingTouches = [];
