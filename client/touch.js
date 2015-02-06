@@ -331,7 +331,7 @@ var startup = function(level) {
         ctx.clearRect(heldboxes[i].xPosition,heldboxes[i].yPosition,100,100);
   }
   // heldboxes = [];
-  console.log('THIS IS THE URLLL', level.backgroundUrl)
+  console.log('THIS IS THE URLLL', level.backgroundUrl);
   $('.gameboard').css('background-image', 'url('+level.backgroundUrl+')')
   console.log('starting at level: ', level);
   var finalCountDown = addRect(ctx, level);

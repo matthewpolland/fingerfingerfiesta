@@ -6,6 +6,12 @@ var scoreMethods = {
       console.log('this is score', totalScore)
       totalScore += 5;
        $('h1').text("Score: " + ""+totalScore+""+"/"+""+minScore+"");
+       if (totalScore === minScore) {
+        $('.progressBar').prop("value", 0);
+       } else {
+        $('.progressBar').prop("value", totalScore);
+       }
+       $('.progressBar').prop("max", minScore);
       if (this.checkScore() === true) {
         var didYouWin = true;
         endLevel(didYouWin);
