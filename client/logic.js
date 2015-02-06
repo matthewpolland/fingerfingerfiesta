@@ -22,7 +22,6 @@ var getTime = function(){
   }
 }
 
-
 var timer = function () {
   setInterval(getTime, 1000);
 };
@@ -40,10 +39,9 @@ var endLevel = function (didYouWin) {
   }else{
     // alert('You Lose! Back to Level 1');
     level = 0;
-    //startup();
+    // startup();
   }
 };
-
 
 var initLevel = function (ctx, level) {
   timer();
