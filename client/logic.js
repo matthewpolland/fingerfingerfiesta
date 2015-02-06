@@ -1,7 +1,7 @@
 var timeUp = false;
 var level = 0;
 var levels = [
-{minScore: 20, color: "violet", timer: 5000, backgroundUrl: "img/swerve.gif", id: 1},
+{minScore: 20, color: "violet", timer: 5000, id: 1},
 {minscore: 40, color: "indigo", timer: 4500, backgroundUrl: "img/star.gif", id: 2},
 {minScore: 40, color: "blue", timer: 4000, backgroundUrl: "img/pixels.gif", id: 3},
 {minScore: 50, color: "#39FF14", timer: 3500, id:4},

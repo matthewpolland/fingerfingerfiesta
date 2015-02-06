@@ -336,10 +336,11 @@ var startup = function(level) {
         ctx.clearRect(heldboxes[i].xPosition,heldboxes[i].yPosition,100,100);
   }
   // heldboxes = [];
-  console.log('THIS IS THE URLLL', level.backgroundUrl)
-  $('.levelDiv').toggleClass('newLevel');
+  $('#lvl').addClass('newLevel');
   $('.gameboard').css('background-image', 'url('+level.backgroundUrl+')')
-  $('.levelDiv').toggleClass('newLevel');
+  setTimeout(function() {
+    $('#lvl').removeClass('newLevel');
+  }, 2000);
   console.log('starting at level: ', level);
   var finalCountDown = addRect(ctx, level);
   setInterval(finalCountDown,33);
