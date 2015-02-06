@@ -48,10 +48,10 @@ var endLevel = function (didYouWin) {
   //clear screen
   if(didYouWin){
     alert('You Win! Get ready for the next level!');
-    initLevel("nextLevel");
+    // initLevel("nextLevel");
   }else{
     alert('You Lose! Back to Level 1');
-    initLevel("level1");
+    // initLevel("level1");
   }
 };
 

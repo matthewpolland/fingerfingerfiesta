@@ -7,7 +7,8 @@ var scoreMethods = {
       totalScore += 5;
        $('h1').text("Score: " + ""+totalScore+""+"/"+""+minScore+"");
       if (this.checkScore() === true) {
-        alert('you passed!');
+        var didYouWin = true;
+        endLevel(didYouWin);
       }
     },
     subtractScore: function() {
