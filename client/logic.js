@@ -3,11 +3,18 @@ var level = 0;
 var levels = [
 {minScore: 20, color: "violet", timer: 5000, id: 1},
 {minScore: 40, color: "indigo", timer: 4500, backgroundUrl: "img/star.gif", id: 2},
-{minScore: 50, color: "blue", timer: 4000, backgroundUrl: "img/swerve.gif", id: 3},
-{minScore: 60, color: "#39FF14", timer: 3500, backgroundUrl: "img/tunnel.gif", id:4},
+{minScore: 50, color: "blue", timer: 4000, backgroundUrl: "img/tunnel.gif", id: 3},
+{minScore: 60, color: "#39FF14", timer: 3500, backgroundUrl: "img/swerve.gif", id:4},
 {minScore: 70, color: "yellow", timer: 3000, backgroundUrl: "img/computers.gif", id:5},
 {minScore: 80, color: "orange", timer: 2500, backgroundUrl: "img/pizza.gif", id:6},
-{minScore: 90, color: "red", timer: 2000, backgroundUrl: "img/pixels.gif", id:7}
+{minScore: 90, color: "red", timer: 2000, backgroundUrl: "img/pixels.gif", id:7},
+{minScore: 100, color: "#1D79F2", timer: 2000, backgroundUrl: "img/eating.gif", id:8},
+{minScore: 110, color: "#4EBFD9", timer: 1900, backgroundUrl: "img/dance.gif", id:9},
+{minScore: 120, color: "#63F279", timer: 1800, backgroundUrl: "img/swerve.gif", id:10},
+{minScore: 130, color: "#F28705", timer: 1800, backgroundUrl: "img/colbert.gif", id:11},
+{minScore: 140, color: "#F20505", timer: 1800, backgroundUrl: "img/disco.gif", id:12},
+{minScore: 150, color: "#B202F2", timer: 1800, backgroundUrl: "img/tunnel.gif", id:13},
+{minScore: 160, color: "#D86DF2", timer: 1800, backgroundUrl: "img/pixels.gif", id:14}
 ]
 var time = 30;
 var didYouWin = true;
