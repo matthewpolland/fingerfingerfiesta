@@ -16,7 +16,7 @@ var levels = [
 {minScore: 150, color: "#B202F2", timer: 1800, backgroundUrl: "img/tunnel.gif", id:13},
 {minScore: 160, color: "#D86DF2", timer: 1800, backgroundUrl: "img/pixels.gif", id:14}
 ]
-var time = 30;
+var time = 120;
 var didYouWin = true;
 
 var getTime = function(){
