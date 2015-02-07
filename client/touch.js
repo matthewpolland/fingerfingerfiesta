@@ -14,8 +14,6 @@ var swipeSummary = {};
 
 // Get user name to correlate with swipeData
 
-
-
 var heldboxes = [];
 var boxcount = 0;
 
@@ -106,7 +104,6 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
         
     }
   }
-
 }
 
 var handleStart = function(evt) {

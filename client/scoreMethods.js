@@ -6,7 +6,7 @@ var scoreMethods = {
     addScore: function() {
       console.log('this is score', totalScore)
       totalScore += 5;
-       $('h1').text("Score: " + ""+totalScore+""+"/"+""+minScore+"");
+       $('h1').text("Score: " + ""+totalScore+"");
        if (totalScore === minScore) {
         $('.progressBar').prop("value", 0);
        } else {
@@ -20,7 +20,7 @@ var scoreMethods = {
       }
     },
     subtractScore: function() {
-      $('h1').text("Score: " + ""+totalScore+""+"/"+""+minScore+"");
+      $('h1').text("Score: " + ""+totalScore+"");
       totalScore -= 5;
     },
     checkScore: function() {
