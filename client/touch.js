@@ -93,6 +93,11 @@ var checkline = function(touchesStoreX, touchesStoreY, ctx){
         scoreMethods.addScore();
         ctx.fillStyle = 'green';
         ctx.fillRect(heldboxes[j].xPosition,heldboxes[j].yPosition,100,100);
+        var clearSoon = function(ctx, x, y){
+          console.log("CLEARING");
+          ctx.clearRect(x,y,100,100);
+        } 
+        setTimeout(clearSoon, 200, ctx, heldboxes[j].xPosition, heldboxes[j].yPosition);
         heldboxes.splice(j,1);
         flag = false;
       }
