@@ -23,7 +23,7 @@ var getTime = function(){
   $('h2').text("Time: " + time);
   time--;
   if(time === 0){
-    didYouWin = false;s
+    didYouWin = false;
     endLevel(didYouWin);
     //stop timer
   }
