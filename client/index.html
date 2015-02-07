@@ -22,18 +22,14 @@
         <title>Finger Finger Fiesta</title>
     </head>
     <body>
-        <div class="header">
+        <div class="score header" ng-app="scoreApp">
             <ul class="nav nav-pills pull-right">
-                <li><a href="/">New Game</a></li>
-                <!-- <li><a href="/data-view">Data View</a></li> -->
-                <li><a href="/logout">Logout</a></li>
+                <li><h1 ng-controller="scoreCtrl">Score: {{score}}/{{minScore}}</h1></li>
+                <li><h2>Time: 30</h2></li>
             </ul>
-        </div>
-
-        <div class="score" ng-app="scoreApp">
-            <h1 ng-controller="scoreCtrl">Score: {{score}}/{{minScore}}</h1>
-            <h2>Time: 30</h2>
-            <progress class="progressBar" max="100" value="0"></progress>
+            <div class="meter">
+                <progress class="progressBar" max="100" value="0"></progress>
+            </div>
         </div>
 
         <canvas id="canvas" width="960" height="1600" class="gameboard" >
