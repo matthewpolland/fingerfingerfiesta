@@ -336,11 +336,16 @@ var startup = function(level) {
         ctx.clearRect(heldboxes[i].xPosition,heldboxes[i].yPosition,100,100);
   }
   // heldboxes = [];
+  console.log('thisisthelevels', level.minScore)
+  minScore = level.minScore;
+  $('h1').text("Score: " + ""+totalScore+""+"/"+""+minScore+"");
   $('#lvl').addClass('newLevel');
   $('.gameboard').css('background-image', 'url('+level.backgroundUrl+')')
+  
   setTimeout(function() {
     $('#lvl').removeClass('newLevel');
   }, 2000);
+  
   console.log('starting at level: ', level);
   var finalCountDown = addRect(ctx, level);
   setInterval(finalCountDown,33);
