@@ -54,12 +54,16 @@ body{
 .newLevel {
   position:   absolute; 
   z-index:    10;
-  background: purple;
+  background-image: url('../img/nyan.gif');
+  background-size: 100%;
   text-align: center; 
-  width:      500px;
-  height:     200px; 
-  top:        0; 
-  left:       0; 
+  width:      900px;
+  height:     1200px;
+  margin: 0 auto;
+  top: 300px;
+  left: 50px;
+  right: 50px;
+  font-size: 30px;
 }
 
 
